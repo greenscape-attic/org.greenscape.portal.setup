@@ -3,11 +3,11 @@ package org.greenscape.portal.setup;
 import java.util.Date;
 import java.util.List;
 
+import org.greenscape.core.model.Organization;
+import org.greenscape.core.model.Page;
+import org.greenscape.core.model.Site;
+import org.greenscape.core.model.SiteTemplate;
 import org.greenscape.core.service.Service;
-import org.greenscape.organization.OrganizationEntity;
-import org.greenscape.site.Page;
-import org.greenscape.site.Site;
-import org.greenscape.site.SiteTemplate;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -20,15 +20,15 @@ public class DatabaseSetup {
 
 	@Activate
 	public void initData() {
-		OrganizationEntity organization = initDefaultOrganization();
+		Organization organization = initDefaultOrganization();
 		initDefaultSite(organization);
 	}
 
-	public OrganizationEntity initDefaultOrganization() {
-		List<OrganizationEntity> list = service.find(OrganizationEntity.class);
-		OrganizationEntity organization = null;
+	public Organization initDefaultOrganization() {
+		List<Organization> list = service.find(Organization.class);
+		Organization organization = null;
 		if (list == null || list.size() == 0) {
-			organization = new OrganizationEntity();
+			organization = new Organization();
 			organization.setName(GREENSCAPE);
 			organization.setActive(true);
 			organization.setHomeURL("greenscape");
@@ -43,7 +43,7 @@ public class DatabaseSetup {
 		return organization;
 	}
 
-	public Site initDefaultSite(OrganizationEntity organization) {
+	public Site initDefaultSite(Organization organization) {
 		List<Site> list = service.find(Site.class, Site.IS_DEFAULT, true);
 		Site entity = null;
 		if (list == null || list.size() == 0) {
@@ -93,6 +93,6 @@ public class DatabaseSetup {
 	}
 
 	public void unsetService(Service service) {
-		this.service = service;
+		this.service = null;
 	}
 }

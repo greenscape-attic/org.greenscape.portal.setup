@@ -1,11 +1,10 @@
 Private-Package: org.greenscape.portal.setup
--buildpath: osgi.core,\
+-buildpath:  \
+	osgi.core,\
 	osgi.cmpn,\
 	junit.osgi,\
 	org.eclipse.osgi.services,\
 	org.greenscape.persistence;version=latest,\
-	org.greenscape.site;version=latest,\
-	org.greenscape.organization;version=latest,\
 	org.greenscape.core;version=latest
 -dsannotations: *
 Bundle-Version: 0.1.0
