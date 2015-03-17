@@ -8,6 +8,5 @@ Private-Package: org.greenscape.portal.setup
 	org.greenscape.core;version=latest
 -dsannotations: *
 Bundle-Version: 0.1.0
-Test-Cases: org.greenscape.portal.setup.DatabaseSetupTest
 javac.source=1.8
 javac.target=1.8
